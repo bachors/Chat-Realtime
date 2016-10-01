@@ -21,7 +21,9 @@ Realtime:
 - Push inbox count.
 
 <h3>Penggunaan:</h3>
-1. Setting database <code>lib/config.php</code>
+1. Import database <code>db/chat_realtime.sql</code>
+
+2. Setting database <code>lib/config.php</code>
 <pre>
 &lt;?php
 // Replace with: your database account
@@ -30,7 +32,7 @@ $password     = "REPLACE";
 $host         = "REPLACE";
 $name         = "chat_realtime";
 </pre>
-2. Setting firebase & MySQL API <code>js/config.js</code>
+3. Setting firebase & MySQL API <code>js/config.js</code>
 <pre>
 // Replace with: your_firebase_name.firebaseio.com
 var dbRef = new Firebase("https://REPLACE.firebaseio.com/"),
