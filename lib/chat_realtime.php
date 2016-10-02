@@ -89,15 +89,6 @@ class Chat_realtime {
 				$upd->execute(array($user));
 			}
 		}
-		$delt=$this->dbh->prepare("SELECT * FROM users");
-		$delt->execute();
-		while($r=$delt->fetch()){
-			$curtime=strtotime(date("Y-m-d H:i:s",strtotime('-25 seconds', time())));
-			if(strtotime($r['login']) < $curtime){
-				$kql = $this->dbh->prepare("UPDATE users SET status=? WHERE name=?");
-				$kql->execute(array('offline', $r['name']));
-			}
-		}	
 		$data = array();
 		$sql=$this->dbh->prepare("SELECT * FROM users");
 		$sql->execute();
