@@ -35,12 +35,6 @@ var chat_realtime = function(j, k, l, m, n) {
                 }
             }
         } else {
-            chatMysql('rooms', 'public');
-            if ($('#' + a.val().name).hasClass('active')) {
-                $("#ke").val('public');
-                $("#tipe").val('rooms');
-                $("#public").addClass("active")
-            }
             $('#' + a.val().name + ' .fa-circle').removeClass('online')
         }
         j.child(a.key()).remove()
