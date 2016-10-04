@@ -157,9 +157,9 @@ var chat_realtime = function(j, k, l, m, n) {
         console.log(a);
         var b = '';
         if (a.name == m) {
-            b = '<li class="right clearfix ' + a.name + '">' + '<span class="chat-img pull-right">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<p class="msg">' + htmlEntities(a.message) + '</p>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '</li>'
+            b = '<li class="right clearfix ' + a.name + '">' + '<span class="chat-img pull-right">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '</li>'
         } else {
-            b = '<li class="left clearfix ' + a.name + '">' + '<span class="chat-img pull-left">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<div class="kepala">' + '<strong class="primary-font">' + a.name + '</strong>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '<p class="msg">' + htmlEntities(a.message) + '</p>' + '</div>' + '</li>'
+            b = '<li class="left clearfix ' + a.name + '">' + '<span class="chat-img pull-left">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<div class="kepala">' + '<strong class="primary-font">' + a.name + '</strong>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '</div>' + '</li>'
         }
         return b
     }
@@ -181,9 +181,9 @@ var chat_realtime = function(j, k, l, m, n) {
                     $.each(a, function(i, a) {
                         if ($('#' + a.selektor).hasClass('active')) {
                             if (a.name == m) {
-                                b += '<li class="right clearfix ' + a.name + '">' + '<span class="chat-img pull-right">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<p class="msg">' + htmlEntities(a.message) + '</p>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '</li>'
+                                b += '<li class="right clearfix ' + a.name + '">' + '<span class="chat-img pull-right">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '</li>'
                             } else {
-                                b += '<li class="left clearfix ' + a.name + '">' + '<span class="chat-img pull-left">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<div class="kepala">' + '<strong class="primary-font">' + a.name + '</strong>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '<p class="msg">' + htmlEntities(a.message) + '</p>' + '</div>' + '</li>'
+                                b += '<li class="left clearfix ' + a.name + '">' + '<span class="chat-img pull-left">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<div class="kepala">' + '<strong class="primary-font">' + a.name + '</strong>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '</div>' + '</li>'
                             }
                             $('.chat').html(b)
                         }
@@ -200,9 +200,9 @@ var chat_realtime = function(j, k, l, m, n) {
                 } else {
                     $.each(a, function(i, a) {
                         if (a.name == m) {
-                            b += '<li class="right clearfix ' + a.name + '">' + '<span class="chat-img pull-right">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<p class="msg">' + htmlEntities(a.message) + '</p>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '</li>'
+                            b += '<li class="right clearfix ' + a.name + '">' + '<span class="chat-img pull-right">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '</li>'
                         } else {
-                            b += '<li class="left clearfix ' + a.name + '">' + '<span class="chat-img pull-left">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<div class="kepala">' + '<strong class="primary-font">' + a.name + '</strong>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '<p class="msg">' + htmlEntities(a.message) + '</p>' + '</div>' + '</li>'
+                            b += '<li class="left clearfix ' + a.name + '">' + '<span class="chat-img pull-left">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<div class="kepala">' + '<strong class="primary-font">' + a.name + '</strong>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '</div>' + '</li>'
                         }
                         if (a.tipe == 'rooms') {
                             document.querySelector('#' + f + ' strong').innerHTML = a.name;
@@ -250,6 +250,48 @@ var chat_realtime = function(j, k, l, m, n) {
             return i + " min ago"
         }
         return (Math.floor(s) > 0 ? Math.floor(s) + " sec ago" : "just now")
+    }
+	
+	function urltag(d, e) {
+        var f = {
+            link: {
+                regex: /((^|)(https|http|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig,
+                template: "<a href='$1' target='_BLANK'>$1</a>"
+            },
+            email: {
+                regex: /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi,
+                template: '<a href=\"mailto:$1\">$1</a>'
+            },
+            smile: {
+                regex: /(^|):\)/gi,
+                template: '<img class="emo" src="http://www.messentools.com/images/emoticones/mensajes/www.MessenTools.com-Mensajes-big-10.gif"/>'
+            },
+            cool: {
+                regex: /(^|)B\)/gi,
+                template: '<img class="emo" src="http://de.academic.ru/pictures/dewiki/52/40px-Emblem-cool_svg.png"/>'
+            },
+            lol: {
+                regex: /(^|):v/gi,
+                template: '<img class="emo" src="http://www.messentools.com/images/emoticones/lol/www.MessenTools.com-emoticones-lol-risa-007.gif"/>'
+            },
+            haha: {
+                regex: /(^|):D/gi,
+                template: '<img class="emo" src="http://frenker.nl/forum/Smileys/default/40px-718smiley.svg.png"/>'
+            },
+            sad: {
+                regex: /(^|):\(/gi,
+                template: '<img class="emo" src="http://images.uncyc.org/commons/thumb/0/06/Face-sad.svg/40px-Face-sad.svg.png"/>'
+            },
+            like: {
+                regex: /(^|)\(y\)/gi,
+                template: '<img class="emo" src="http://www.messentools.com/images/emoticones/mensajes/www.MessenTools.com-Mensajes-big-13.gif"/>'
+            }
+        };
+        var g = $.extend(f, e);
+        $.each(g, function(a, b) {
+            d = d.replace(b.regex, b.template)
+        });
+        return d
     }
 
 }
