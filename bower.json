@@ -1,0 +1,25 @@
+{
+  "name": "Chat-Realtime",
+  "homepage": "https://github.com/bachors/Chat-Realtime",
+  "authors": [
+    "http://ibacor.com"
+  ],
+  "description": "Public & Private message. MySQL & Firebase.",
+  "main": "",
+  "keywords": [
+    "Chat",
+    "Realtime"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-emoji-picker": "^0.2.0"
+  }
+}
