@@ -14,6 +14,7 @@ Aplikasi ini dibuat menggunakan:
 Fitur:
 - Public rooms chat.
 - Private chat with user.
+- Sedn message with emoticon.
 
 Realtime:
 - Status user online or offline.
