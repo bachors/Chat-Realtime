@@ -265,3 +265,7 @@ body {
 	text-decoration: none;
 	outline: 0;
 }
+
+.emoji-picker-icon {
+    right: 70px;
+}
