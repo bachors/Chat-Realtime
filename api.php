@@ -2,8 +2,8 @@
 
 session_start();		
 		
-include_once('lib/config.php');
-include_once('lib/chat_realtime.php');
+include_once('php/config.php');
+include_once('php/chat_realtime.php');
 $chat = new Chat_realtime($name, $host, $username, $password);
 		
 $data = array();
