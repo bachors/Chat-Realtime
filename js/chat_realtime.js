@@ -9,11 +9,14 @@
 *****************************************************/
 
 var chat_realtime = function(j, k, l, m, n) {
+	
+	var uKe = 'public',
+		uTipe = 'rooms';
 
     userMysql();
 
     j.on("child_added", function(a) {
-        console.log("added", a.key(), a.val());
+        //console.log("added", a.key, a.val());
         if (a.val().tipe == 'login') {
             if (a.val().name != m) {
                 if ($('#' + a.val().name).length) {
@@ -37,13 +40,15 @@ var chat_realtime = function(j, k, l, m, n) {
         } else {
             $('#' + a.val().name + ' .fa-circle').removeClass('online')
         }
-        j.child(a.key()).remove()
+        j.child(a.key).remove()
     });
 
     k.on("child_added", function(a) {
-        console.log("added", a.key(), a.val());
+        //console.log("added", a.key, a.val());
         var b = a.val().name,
             ke = a.val().ke;
+		
+		// inbox user
         if (ke == m) {
             document.querySelector('#' + b + ' .time').innerHTML = timing(new Date(a.val().date));
             document.querySelector('#' + b + ' .last-message').innerHTML = '<i class="fa fa-reply"></i> ' + htmlEntities(a.val().message);
@@ -53,7 +58,10 @@ var chat_realtime = function(j, k, l, m, n) {
                 $('#' + b + ' .chat-alert').show();
                 document.querySelector('#' + b + ' .chat-alert').innerHTML = (parseInt(document.querySelector('#' + b + ' .chat-alert').innerHTML) + 1)
             }
-        } else if (ke != m && $('#' + ke).data('tipe') == 'rooms') {
+        }
+		
+		// inbox room
+		else if (ke != m && $('#' + ke).data('tipe') == 'rooms') {
             document.querySelector('#' + ke + ' strong').innerHTML = a.val().name;
             document.querySelector('#' + ke + ' img').src = a.val().avatar;
             document.querySelector('#' + ke + ' .time').innerHTML = timing(new Date(a.val().date));
@@ -64,7 +72,10 @@ var chat_realtime = function(j, k, l, m, n) {
                 $('#' + ke + ' .chat-alert').show();
                 document.querySelector('#' + ke + ' .chat-alert').innerHTML = (parseInt(document.querySelector('#' + ke + ' .chat-alert').innerHTML) + 1)
             }
-        } else if (b == m) {
+        }
+		
+		// send message
+		else if (b == m) {
             document.querySelector('#' + ke + ' .time').innerHTML = timing(new Date(a.val().date));
             document.querySelector('#' + ke + ' .last-message').innerHTML = '<i class="fa fa-check"></i> ' + htmlEntities(a.val().message);
             document.querySelector('.chat').innerHTML += (chatFirebase(a.val()))
@@ -72,9 +83,10 @@ var chat_realtime = function(j, k, l, m, n) {
         var c = $('.chat');
         var d = c[0].scrollHeight;
         c.scrollTop(d);
-        k.child(a.key()).remove()
+        k.child(a.key).remove()
     });
 
+	//send chat
     document.querySelector('#send').addEventListener("click", function(h) {
         var a = new Date(),
             b = a.getDate(),
@@ -89,20 +101,25 @@ var chat_realtime = function(j, k, l, m, n) {
             var i = {
                 data: 'send',
                 name: m,
-                ke: document.querySelector('#ke').value,
+                ke: uKe,
                 avatar: n,
                 message: document.querySelector('#message').value,
-                tipe: document.querySelector('#tipe').value,
+                tipe: uTipe,
                 date: date
             };
+			
+			// push firebase
             k.push(i);
+			
+			// insert mysql
             $.ajax({
                 url: l,
                 type: "post",
                 data: i,
                 crossDomain: true
             });
-            document.querySelector('#message').value = ''
+            document.querySelector('#message').value = '';
+			document.querySelector('.emoji-wysiwyg-editor').innerHTML = '';
         } else {
             alert('Please fill atlease message!')
         }
@@ -116,8 +133,8 @@ var chat_realtime = function(j, k, l, m, n) {
             tipe = $(this).data('tipe');
         $('#' + a + ' .chat-alert').hide();
         $('#' + a + ' .chat-alert').html(0);
-        $("#ke").val(a);
-        $("#tipe").val(tipe);
+        uKe = a;
+        uTipe = tipe;
         chatMysql(tipe, a);
         return false
     });
@@ -154,7 +171,7 @@ var chat_realtime = function(j, k, l, m, n) {
     }
 
     function chatFirebase(a) {
-        console.log(a);
+        //console.log(a);
         var b = '';
         if (a.name == m) {
             b = '<li class="right clearfix ' + a.name + '">' + '<span class="chat-img pull-right">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '</li>'
@@ -185,7 +202,6 @@ var chat_realtime = function(j, k, l, m, n) {
                             } else {
                                 b += '<li class="left clearfix ' + a.name + '">' + '<span class="chat-img pull-left">' + '<img src="' + a.avatar + '" alt="User Avatar">' + '</span>' + '<div class="chat-body clearfix">' + '<div class="kepala">' + '<strong class="primary-font">' + a.name + '</strong>' + '<small class="pull-right text-muted"><i class="fa fa-clock-o"></i> ' + timing(new Date(a.date)) + '</small>' + '</div>' + '<p class="msg">' + urltag(htmlEntities(a.message)) + '</p>' + '</div>' + '</li>'
                             }
-                            $('.chat').html(b)
                         }
                         if (a.tipe == 'rooms') {
                             document.querySelector('#' + a.selektor + ' strong').innerHTML = a.name;
@@ -196,7 +212,8 @@ var chat_realtime = function(j, k, l, m, n) {
                             document.querySelector('#' + a.selektor + ' .time').innerHTML = timing(new Date(a.date));
                             document.querySelector('#' + a.selektor + ' .last-message').innerHTML = (a.name == m ? '<i class="fa fa-check"></i> ' + htmlEntities(a.message) : '<i class="fa fa-reply"></i> ' + htmlEntities(a.message))
                         }
-                    })
+                    });
+                    $('.chat').prepend(b);
                 } else {
                     $.each(a, function(i, a) {
                         if (a.name == m) {
@@ -214,7 +231,7 @@ var chat_realtime = function(j, k, l, m, n) {
                             document.querySelector('#' + f + ' .last-message').innerHTML = (a.name == m ? '<i class="fa fa-check"></i> ' + htmlEntities(a.message) : '<i class="fa fa-reply"></i> ' + htmlEntities(a.message))
                         }
                     });
-                    $('.chat').html(b)
+                    $('.chat').prepend(b);
                 }
                 var c = $('.chat');
                 var d = c[0].scrollHeight;
@@ -261,30 +278,6 @@ var chat_realtime = function(j, k, l, m, n) {
             email: {
                 regex: /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi,
                 template: '<a href=\"mailto:$1\">$1</a>'
-            },
-            smile: {
-                regex: /(^|):\)/gi,
-                template: '<img class="emo" src="http://www.messentools.com/images/emoticones/mensajes/www.MessenTools.com-Mensajes-big-10.gif"/>'
-            },
-            cool: {
-                regex: /(^|)B\)/gi,
-                template: '<img class="emo" src="http://de.academic.ru/pictures/dewiki/52/40px-Emblem-cool_svg.png"/>'
-            },
-            lol: {
-                regex: /(^|):v/gi,
-                template: '<img class="emo" src="http://www.messentools.com/images/emoticones/lol/www.MessenTools.com-emoticones-lol-risa-007.gif"/>'
-            },
-            haha: {
-                regex: /(^|):D/gi,
-                template: '<img class="emo" src="http://frenker.nl/forum/Smileys/default/40px-718smiley.svg.png"/>'
-            },
-            sad: {
-                regex: /(^|):\(/gi,
-                template: '<img class="emo" src="http://images.uncyc.org/commons/thumb/0/06/Face-sad.svg/40px-Face-sad.svg.png"/>'
-            },
-            like: {
-                regex: /(^|)\(y\)/gi,
-                template: '<img class="emo" src="http://www.messentools.com/images/emoticones/mensajes/www.MessenTools.com-Mensajes-big-13.gif"/>'
             }
         };
         var g = $.extend(f, e);
