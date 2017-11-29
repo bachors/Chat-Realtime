@@ -1,6 +1,9 @@
 // MySQL API
 var apis = 'api.php'; 
 
+// set image directori
+var imageDir = 'image';
+
 // Replace with: your firebase account
 var config = {
     apiKey: "AIzaSyDfKpgAUCOja3z-tc0yHOqzOCEGo0seJAQ",
