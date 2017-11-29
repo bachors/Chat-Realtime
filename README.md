@@ -14,7 +14,7 @@ Aplikasi ini dibuat menggunakan:
 Fitur:
 - Public rooms chat.
 - Private chat with user.
-- Sedn message with emoticon.
+- Send message with emoticon, images & videos.
 
 Realtime:
 - Status user online or offline.
@@ -28,6 +28,10 @@ Realtime:
 2. Setting database <code>php/config.php</code>
 <pre>
 &lt;?php
+
+// Image dir
+$imageDir = "image";
+
 // Replace with: your database account
 $username     = "REPLACE";
 $password     = "REPLACE";
@@ -38,6 +42,9 @@ $name         = "chat_realtime";
 <pre>
 // MySQL API
 var apis = 'api.php'; 
+
+// set image directori
+var imageDir = 'image';
 
 // Replace with: your firebase account
 var config = {
