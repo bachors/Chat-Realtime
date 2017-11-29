@@ -255,6 +255,23 @@ body {
 	-o-transition: all .5s ease;
 }
 
+#chat-realtime .chat .msg img.imageDir {
+	width: auto !important;
+	max-width: 100% !important;
+	height: auto !important;
+	border-radius: 0px !important;
+	margin-bottom: 10px !important;
+	display: block !important
+}
+
+#chat-realtime .chat .msg iframe.yutub {
+	width: 100% !important;
+	height: 400px !important;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+	display: block !important
+}
+
 #chat-realtime .primary-font {
 	color: #777;
 }
@@ -264,6 +281,17 @@ body {
 #chat-realtime a:focus {
 	text-decoration: none;
 	outline: 0;
+}
+
+#chat-realtime #reviewImg {
+	border: 1px solid #ddd;
+	padding: 5px
+}
+
+#chat-realtime #reviewImg img {
+	width: 100px;
+	display: inline;
+	cursor: pointer
 }
 
 .emoji-picker-icon {
