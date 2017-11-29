@@ -3,7 +3,7 @@
 /*****************************************************
 * #### Chat Realtime (BETA) ####
 * Coded by Ican Bachors 2016.
-* http://ibacor.com/labs/chat-realtime
+* https://github.com/bachors/Chat-Realtime
 * Updates will be posted to this site.
 * Aplikasi ini akan selalu bersetatus (BETA) 
 * Karena akan terus di update & dikembangkan.
@@ -16,10 +16,12 @@ class Chat_realtime {
 	private $host;
 	private $username;
 	private $password;
+	private $imageDir;
 	
-	function __construct($name, $host, $username, $password)
+	function __construct($name, $host, $username, $password, $imageDir)
     {
         $this->dbh = new PDO('mysql:dbname='.$name.';host='.$host.";port=3306",$username, $password);
+		$this->imageDir = $imageDir;
     }
 	
 	function user_login($user, $avatar){
@@ -53,6 +55,7 @@ class Chat_realtime {
 					'name' => $r['name'],
 					'avatar' => $r['avatar'],
 					'message' => $r['message'],
+					'image' => $r['image'],
 					'tipe' => $r['tipe'],
 					'date' => $r['date'],
 					'selektor' => $r['ke']
@@ -71,6 +74,7 @@ class Chat_realtime {
 					'name' => $r['name'],
 					'avatar' => $r['avatar'],
 					'message' => $r['message'],
+					'image' => $r['image'],
 					'tipe' => $r['tipe'],
 					'date' => $r['date'],
 					'selektor' => ($r['name'] == $user ? $r['ke'] : $r['name'])
@@ -103,10 +107,10 @@ class Chat_realtime {
 		return $data;
 	}
 	
-	function send_message($name, $ke, $message, $date, $avatar, $tipe){		
+	function send_message($name, $ke, $message, $image, $date, $avatar, $tipe){		
 		$data = array();
-		$sql=$this->dbh->prepare("INSERT INTO messages (name,ke,avatar,message,tipe,date) VALUES (?,?,?,?,?,?)");
-		$sql->execute(array($name,$ke,$avatar,$message,$tipe,$date));
+		$sql=$this->dbh->prepare("INSERT INTO messages (name,ke,avatar,message,image,tipe,date) VALUES (?,?,?,?,?,?,?)");
+		$sql->execute(array($name,$ke,$avatar,$message,$image,$tipe,$date));
 		$data['status'] = 'success';
 		return $data;
 	}
@@ -117,6 +121,29 @@ class Chat_realtime {
 		$user->execute(array('offline',$name));
 		$data['status'] = 'success';
 		return $data;
+	}
+	
+	// upload image
+	function arrayToBinaryString($arr) {
+		$str = "";
+		foreach($arr as $elm) {
+			$str .= chr((int) $elm);
+		}
+		return $str;
+	}
+
+	function createImg($string, $name, $type){
+		$im = imagecreatefromstring($string); 
+		if($type == 'image/png'){
+				imageAlphaBlending($im, true);
+				imageSaveAlpha($im, true);
+			imagepng($im, $this->imageDir.'/'.$name);
+		}else if($type == 'image/gif'){
+			imagegif($im, $this->imageDir.'/'.$name);
+		}else{
+			imagejpeg($im, $this->imageDir.'/'.$name);
+		}
+		imagedestroy($im);
 	}
 	
 }
