@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2016 at 12:30 PM
+-- Generation Time: Nov 29, 2017 at 02:03 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -32,6 +32,7 @@ CREATE TABLE `messages` (
   `ke` text NOT NULL,
   `avatar` varchar(500) NOT NULL,
   `message` text NOT NULL,
+  `image` varchar(500) NOT NULL,
   `tipe` varchar(200) NOT NULL,
   `date` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -40,11 +41,11 @@ CREATE TABLE `messages` (
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`id`, `name`, `ke`, `avatar`, `message`, `tipe`, `date`) VALUES
-(1, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'Aplikasi ini akan selalu bersetatus (BETA).', 'rooms', '2016-10-01 17:28:20'),
-(2, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'Karena akan terus di update & dikembangkan.', 'rooms', '2016-10-01 17:28:27'),
-(3, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'Maka dari itu jangan lupa di fork & like ya sob :)', 'rooms', '2016-10-01 17:28:36'),
-(4, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'https://github.com/bachors/Chat-Realtime', 'rooms', '2016-10-01 17:28:59');
+INSERT INTO `messages` (`id`, `name`, `ke`, `avatar`, `message`, `image`, `tipe`, `date`) VALUES
+(1, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'Aplikasi ini akan selalu bersetatus (BETA).', '', 'rooms', '2016-10-01 17:28:20'),
+(2, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'Karena akan terus di update & dikembangkan.', '15119540464131lq9W.jpg', 'rooms', '2016-10-01 17:28:27'),
+(3, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'Maka dari itu jangan lupa di fork & like ya sob :) https://www.youtube.com/watch?v=jfSZg6JABoA', '', 'rooms', '2016-10-01 17:28:36'),
+(4, 'bachors', 'public', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', 'ðŸ‘‰ https://github.com/bachors/Chat-Realtime ðŸ‘', '', 'rooms', '2016-10-01 17:28:59');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ke`, `name`, `avatar`, `login`, `status`) VALUES
-(1, 'bachors', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', '2016-10-01 17:27:57', 'online');
+(1, 'bachors', 'http://3.bp.blogspot.com/-c8O1QI1Ty24/UikpRn-WYLI/AAAAAAAAJ0Y/hCd3SVMejGQ/s1600/1cc767a412f68bc6ff6f26b526c4ecfd.jpeg', '2017-11-29 19:58:10', 'offline');
 
 --
 -- Indexes for dumped tables
