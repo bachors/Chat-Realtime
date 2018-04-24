@@ -60,3 +60,6 @@ var dbRef = firebase.database().ref(),
 </pre>
 
 <h3>Done :)</h3>
+
+Hello.
+How to configure firebase, to save your data. I did like you, that he could not save. Guide yourself not.
