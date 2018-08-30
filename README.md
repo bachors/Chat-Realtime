@@ -15,6 +15,7 @@ Fitur:
 - Public rooms chat.
 - Private chat with user.
 - Send message with emoticon, images & videos.
+- search user.
 - Load more message.
 
 Realtime:
