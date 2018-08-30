@@ -15,6 +15,7 @@ Fitur:
 - Public rooms chat.
 - Private chat with user.
 - Send message with emoticon, images & videos.
+- Load more message.
 
 Realtime:
 - Status user online or offline.
@@ -60,3 +61,4 @@ var dbRef = firebase.database().ref(),
 </pre>
 
 <h3>Done :)</h3>
+<img src="https://raw.githubusercontent.com/bachors/Chat-Realtime/master/screenshoot.jpg"/>
