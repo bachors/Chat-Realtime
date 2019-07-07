@@ -42,23 +42,28 @@ $name         = "chat_realtime";
 </pre>
 3. Setting firebase & MySQL API <code>js/config.js</code>
 <pre>
+// Domain
+const domain = "http://REPLACE";
+
 // MySQL API
-var apis = 'api.php'; 
+const apis = 'api.php';
 
 // set image directori
-var imageDir = 'image';
+const imageDir = 'image';
 
 // Replace with: your firebase account
-var config = {
+const config = {
     apiKey: "REPLACE",
     databaseURL: "https://REPLACE.firebaseio.com"
 };
 firebase.initializeApp(config);
 
 // create firebase child
-var dbRef = firebase.database().ref(),
-	messageRef = dbRef.child('message'),
-	userRef = dbRef.child('user');
+const dbRef = firebase.database().ref();
+
+const messageRef = dbRef.child('message');
+const userRef = dbRef.child('user');
+
 </pre>
 
 <h3>Done :)</h3>
