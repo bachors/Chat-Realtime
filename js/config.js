@@ -1,17 +1,21 @@
+// Domain
+const domain = "http://localhost/Chat-Realtime/";
+
 // MySQL API
-var apis = 'api.php'; 
+const apis = 'api.php';
 
 // set image directori
-var imageDir = 'image';
+const imageDir = 'image';
 
 // Replace with: your firebase account
-var config = {
+const config = {
     apiKey: "AIzaSyDfKpgAUCOja3z-tc0yHOqzOCEGo0seJAQ",
     databaseURL: "https://chatws-40480.firebaseio.com"
 };
 firebase.initializeApp(config);
 
 // create firebase child
-var dbRef = firebase.database().ref(),
-	messageRef = dbRef.child('message'),
-	userRef = dbRef.child('user');
+const dbRef = firebase.database().ref();
+
+const messageRef = dbRef.child('message');
+const userRef = dbRef.child('user');
