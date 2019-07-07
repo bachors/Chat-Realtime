@@ -1,5 +1,5 @@
 // Domain
-const domain = "http://localhost/Chat-Realtime/";
+const domain = "http://REPLACE";
 
 // MySQL API
 const apis = 'api.php';
@@ -9,8 +9,8 @@ const imageDir = 'image';
 
 // Replace with: your firebase account
 const config = {
-    apiKey: "AIzaSyDfKpgAUCOja3z-tc0yHOqzOCEGo0seJAQ",
-    databaseURL: "https://chatws-40480.firebaseio.com"
+    apiKey: "REPLACE",
+    databaseURL: "https://REPLACE.firebaseio.com"
 };
 firebase.initializeApp(config);
 
